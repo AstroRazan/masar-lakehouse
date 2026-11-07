@@ -1,0 +1,10 @@
+# Pinned for the SDA-DSC-214 workshop. Python 3.11, Java 17.
+pyspark==3.5.1
+delta-spark==3.2.0
+dbt-core==1.8.*
+dbt-spark[session]==1.8.*
+great-expectations==0.18.19   # slides use the 0.x API; 1.x differs
+kafka-python==2.0.2
+pandas>=2.0,<3
+pyarrow>=14
+pytest>=7

@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+lakehouse/
+data/raw/*
+data/fixtures/*
+!data/raw/.gitkeep
+!data/fixtures/.gitkeep
+metastore_db/
+derby.log
+spark-warehouse/
+dbt/masar/target/
+dbt/masar/dbt_packages/
+dbt/masar/logs/
+logs/
+.pytest_cache/
+.DS_Store
+
+# Trainer-only files (never pushed)
+TRAINER_NOTES.md
