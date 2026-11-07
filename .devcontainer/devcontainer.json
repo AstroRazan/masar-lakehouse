@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
     "ghcr.io/devcontainers/features/java:1": { "version": "17" },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": { "moby": false }
   },
   "hostRequirements": { "cpus": 4, "memory": "16gb" },
   "containerEnv": {
@@ -15,7 +15,7 @@
     "4040": { "label": "Spark UI", "onAutoForward": "notify" },
     "9092": { "label": "Kafka broker", "onAutoForward": "silent" }
   },
-  "postCreateCommand": "pip install -r requirements.txt && python scripts/warm_cache.py && (docker pull apache/kafka:3.7.0 || true) && make doctor",
+  "postCreateCommand": "pip install -r requirements.txt && python scripts/warm_cache.py && (docker pull apache/kafka:3.7.0 || true) ; make doctor || true",
   "customizations": {
     "vscode": {
       "extensions": [

@@ -3,6 +3,9 @@
 Every tutorial imports get_spark(). The first call downloads the Delta (and Kafka)
 jars from Maven Central, so it needs network access once.
 """
+import os
+import sys
+
 from pyspark.sql import SparkSession
 from delta import configure_spark_with_delta_pip
 
@@ -14,6 +17,8 @@ KAFKA_PACKAGE = f"org.apache.spark:spark-sql-kafka-0-10_2.12:{SPARK_VERSION}"
 
 def get_spark(app_name: str = "masar-lakehouse", kafka: bool = False) -> SparkSession:
     """Spark 3.5 + Delta Lake session for the Masar Lakehouse."""
+    # Workers must run the same Python as the driver, even if the venv is not activated.
+    os.environ.setdefault("PYSPARK_PYTHON", sys.executable)
     LAKEHOUSE.mkdir(parents=True, exist_ok=True)
     metastore = (LAKEHOUSE / "_metastore").as_posix()
     builder = (
