@@ -5,9 +5,25 @@
     "ghcr.io/devcontainers/features/java:1": { "version": "17" },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "hostRequirements": { "cpus": 4, "memory": "8gb" },
-  "postCreateCommand": "pip install -r requirements.txt && make doctor",
+  "hostRequirements": { "cpus": 4, "memory": "16gb" },
+  "containerEnv": {
+    "PYTHONPATH": "${containerWorkspaceFolder}/src",
+    "MASAR_HOME": "${containerWorkspaceFolder}"
+  },
+  "forwardPorts": [4040, 9092],
+  "portsAttributes": {
+    "4040": { "label": "Spark UI", "onAutoForward": "notify" },
+    "9092": { "label": "Kafka broker", "onAutoForward": "silent" }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && python scripts/warm_cache.py && (docker pull apache/kafka:3.7.0 || true) && make doctor",
   "customizations": {
-    "vscode": { "extensions": ["ms-python.python", "redhat.vscode-yaml"] }
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "redhat.vscode-yaml",
+        "innoverio.vscode-dbt-power-user"
+      ]
+    }
   }
 }
