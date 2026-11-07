@@ -19,7 +19,8 @@ def ver(mod):
         m = importlib.import_module(mod)
         return True, getattr(m, "__version__", "installed")
     except Exception as e:  # noqa: BLE001
-        return False, f"missing ({e.__class__.__name__})"
+        msg = str(e).strip().splitlines()[0][:70] if str(e).strip() else ""
+        return False, f"import failed: {e.__class__.__name__} {msg}".strip()
 
 
 print("Masar workshop doctor\n")

@@ -6,5 +6,6 @@ dbt-spark[session]==1.8.*
 great-expectations==0.18.19   # slides use the 0.x API; 1.x differs
 kafka-python==2.0.2
 pandas>=2.0,<3
+numpy<2             # pyspark/pandas/pyarrow stack in this workshop is built for NumPy 1.x
 pyarrow>=14,<19      # pyarrow 19+ pulls NumPy 2, which breaks the rest of the pinned stack
 pytest>=7
