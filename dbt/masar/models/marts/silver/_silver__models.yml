@@ -1,0 +1,17 @@
+version: 2
+models:
+  - name: silver_trips
+    description: "Conformed, completed Masar trips. One row per trip_id."
+    columns:
+      - name: trip_id
+        tests: [unique, not_null]
+      - name: fare_sar
+        tests:
+          - dbt_utils.accepted_range: {min_value: 0, inclusive: false}
+      - name: city
+        tests:
+          - accepted_values:
+              values: ['Riyadh', 'Jeddah', 'Dammam', 'Mecca', 'Medina']
+      - name: driver_id
+        tests:
+          - relationships: {to: ref('stg_drivers'), field: driver_id}

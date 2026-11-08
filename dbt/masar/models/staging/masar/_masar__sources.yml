@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: trips
+        loaded_at_field: _ingested_at
+        freshness:
+          warn_after:  {count: 6,  period: hour}
+          error_after: {count: 24, period: hour}
+      - name: drivers
