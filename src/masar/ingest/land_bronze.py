@@ -27,7 +27,7 @@ def land_drivers(source_glob: str) -> None:
     _lineage(raw).write.format("delta").mode("append").save(f"{BRONZE}/drivers")
 
 
-if __name__ == "__main__":w
+if __name__ == "__main__":
     land_trips("data/raw/trips_2026-*.csv")
     land_drivers("data/raw/drivers.csv")
     land_gps("data/raw/gps/*.ndjson")
