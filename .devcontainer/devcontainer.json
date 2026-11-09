@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "features": {
     "ghcr.io/devcontainers/features/java:1": { "version": "17" },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": { "moby": false }
+    "ghcr.io/devcontainers/features/docker-in-docker:2": { "moby": false,  "dockerDashComposeVersion": "none"  }
   },
   "hostRequirements": { "cpus": 4, "memory": "16gb" },
   "containerEnv": {
