@@ -120,4 +120,4 @@ This is a teaching lakehouse on one machine with synthetic data. It is not produ
 
 ## Acknowledgements
 
-Built during SDA-DSC-214 at SDAIA Academy, starting from the course repository above.
+Built during SDA-DSC-214 at [SDAIA Academy](https://github.com/SDAIAAcademy) , starting from the course repository above.
